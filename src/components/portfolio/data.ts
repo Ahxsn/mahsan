@@ -137,10 +137,10 @@ export const FAQS = [
 ];
 
 export const STATS = [
-  { value: "120+", label: "Websites shipped" },
-  { value: "8+ yrs", label: "Building for the web" },
-  { value: "34", label: "Countries served" },
-  { value: "98", label: "Avg. Lighthouse score" },
+  { value: "39+", label: "Projects shipped" },
+  { value: "28+", label: "Worldwide clients" },
+  { value: "5.0", label: "Avg. rating" },
+  { value: "2+", label: "Years experience" },
 ];
 
 export const REGIONS = [

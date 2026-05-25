@@ -9,6 +9,7 @@ import { HeroScene } from "@/components/portfolio/HeroScene";
 import { FloatingSkills, SKILLS } from "@/components/portfolio/FloatingSkills";
 import { ProjectShowcase } from "@/components/portfolio/ProjectShowcase";
 import { Testimonials } from "@/components/portfolio/Testimonials";
+import { Services } from "@/components/portfolio/Services";
 import { FAQ } from "@/components/portfolio/FAQ";
 import { STATS, REGIONS } from "@/components/portfolio/data";
 
@@ -16,10 +17,10 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Ahsan — Freelance WordPress & Creative Frontend Developer" },
-      { name: "description", content: "Premium WordPress, Elementor, WooCommerce and React development. Fast, SEO-optimized, beautifully animated websites built for global clients." },
-      { property: "og:title", content: "Ahsan — Freelance WordPress & Creative Frontend Developer" },
-      { property: "og:description", content: "Premium WordPress, Elementor, WooCommerce and React development. Fast, SEO-optimized, beautifully animated websites built for global clients." },
+      { title: "Muhammad Ahsan — Expert WordPress Developer | Lahore, PK" },
+      { name: "description", content: "Muhammad Ahsan (M-Ahxsn) — WordPress, Elementor, WooCommerce and React specialist. Fast, SEO-optimized, beautifully animated websites for clients worldwide." },
+      { property: "og:title", content: "Muhammad Ahsan — Expert WordPress Developer" },
+      { property: "og:description", content: "Pixel-perfect WordPress, WooCommerce and React builds. Core Web Vitals in the green. Available worldwide." },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [{
@@ -27,10 +28,15 @@ export const Route = createFileRoute("/")({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Person",
-        name: "Ahsan",
-        jobTitle: "Freelance WordPress & Creative Frontend Developer",
+        name: "Muhammad Ahsan",
+        alternateName: "M-Ahxsn",
+        jobTitle: "Expert WordPress & Creative Frontend Developer",
+        email: "m.ahxsn@gmail.com",
+        telephone: "+92 303 9968120",
+        address: { "@type": "PostalAddress", addressLocality: "Lahore", addressRegion: "Punjab", addressCountry: "PK" },
         url: "/",
-        knowsAbout: ["WordPress", "Elementor", "WooCommerce", "React", "SEO", "UI/UX", "Tailwind CSS"],
+        sameAs: ["https://linkedin.com/in/M-Ahxsn", "https://github.com/M-Ahxsn", "https://wa.me/923039968120"],
+        knowsAbout: ["WordPress", "Elementor", "WooCommerce", "React", "SEO", "UI/UX", "Tailwind CSS", "Figma to WordPress"],
       }),
     }],
   }),
@@ -129,20 +135,20 @@ function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-foreground/15 glass px-4 py-2 text-xs uppercase tracking-[0.18em] text-muted-foreground"
           >
             <span className="h-2 w-2 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
-            Available for select projects · Q3
+            Available for new projects · Immediate start
           </motion.div>
           <motion.h1
             initial="hidden" animate="show"
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
             className="mt-7 text-[clamp(2.6rem,7vw,5.6rem)] font-semibold leading-[0.98] tracking-tight"
           >
-            {["Crafting", "websites", "that", "feel", "alive."].map((w, i) => (
+            {["Expert", "WordPress", "Developer", "—", "shipped."].map((w, i) => (
               <motion.span
                 key={i}
                 variants={{ hidden: { y: 60, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
                 className="inline-block mr-3"
               >
-                {w === "alive." ? <span className="text-gradient-ember">{w}</span> : w}
+                {w === "shipped." ? <span className="text-gradient-ember">{w}</span> : w}
               </motion.span>
             ))}
           </motion.h1>
@@ -150,19 +156,20 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-7 max-w-xl text-lg text-muted-foreground leading-relaxed"
           >
-            I'm <span className="text-foreground font-medium">Ahsan</span> — a freelance WordPress &amp; creative
-            frontend developer building fast, beautifully animated websites for founders, studios and global brands.
+            Hi, I'm <span className="text-foreground font-medium">Muhammad Ahsan</span> — a WordPress
+            specialist crafting high-converting, lightning-fast and SEO-optimized digital experiences.
+            Sites that <span className="text-foreground">actually convert.</span>
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
             <a href="#contact" className="group relative inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3.5 text-sm font-medium ring-ember-glow">
-              Start a project
+              Get free consultation
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a href="#work" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3.5 text-sm font-medium hover:ring-ember-glow transition">
-              See selected work
+              View portfolio
             </a>
           </motion.div>
 
