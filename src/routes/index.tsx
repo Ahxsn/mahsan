@@ -563,30 +563,90 @@ function Field({ label, name, type = "text", placeholder, required = true }: { l
   );
 }
 
-function Footer() {
+function Social({ href, label, path }: { href: string; label: string; path: string }) {
   return (
-    <footer className="relative border-t border-foreground/10 mt-10">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        <div>
-          <div className="flex items-center gap-2 font-semibold">
-            <span className="h-8 w-8 rounded-xl bg-foreground text-background grid place-items-center font-bold">A</span>
-            <span>Ahsan<span className="text-ember">.</span></span>
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={label}
+      title={label}
+      className="h-10 w-10 grid place-items-center rounded-xl border border-foreground/15 text-foreground/70 hover:text-ember hover:border-ember/50 hover:ring-ember-glow transition"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d={path} />
+      </svg>
+    </a>
+  );
+}
+
+function Footer() {
+  const SOCIALS = [
+    { label: "LinkedIn", href: "https://linkedin.com/in/M-Ahxsn", path: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9Z" },
+    { label: "GitHub", href: "https://github.com/M-Ahxsn", path: "M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.63-1.35-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.12 2.5.35 1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.93.36.31.68.93.68 1.88v2.78c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" },
+    { label: "WhatsApp", href: "https://wa.me/923039968120", path: "M20.5 3.5A11 11 0 0 0 3.4 17.3L2 22l4.8-1.3a11 11 0 0 0 5.2 1.3 11 11 0 0 0 8.5-18.5Zm-8.5 17a9 9 0 0 1-4.6-1.3l-.3-.2-2.9.8.8-2.8-.2-.3a9 9 0 1 1 7.2 3.8Zm5-6.7c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.2s-.7.9-.8 1c-.1.2-.3.2-.6.1a7.4 7.4 0 0 1-3.6-3.2c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5 0-.8.4-.3.4-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.6 2 .8 2.8.8 3.8.7.6-.1 1.6-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.3Z" },
+    { label: "Email", href: "mailto:m.ahxsn@gmail.com", path: "M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2v.3l8 5 8-5V7H4Zm16 2.4-7.4 4.6a1 1 0 0 1-1.2 0L4 9.4V17h16V9.4Z" },
+  ];
+  return (
+    <footer className="relative mt-20 border-t border-foreground/10 bg-gradient-to-b from-background to-surface-2/40">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ember/60 to-transparent" />
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-16">
+        <div className="grid lg:grid-cols-12 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-5">
+            <a href="#top" className="inline-flex items-center gap-2.5 font-semibold">
+              <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl bg-foreground text-background font-bold">
+                A
+                <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-br from-ember to-ember-glow opacity-70 blur" />
+              </span>
+              <span className="text-lg">Muhammad Ahsan<span className="text-ember">.</span></span>
+            </a>
+            <p className="mt-5 text-sm text-muted-foreground max-w-sm leading-relaxed">
+              Expert WordPress &amp; creative frontend developer crafting premium, performant
+              websites for founders, studios and global brands.
+            </p>
+            <div className="mt-6 flex items-center gap-3">
+              {SOCIALS.map((s) => <Social key={s.label} {...s} />)}
+            </div>
           </div>
-          <p className="mt-3 text-sm text-muted-foreground max-w-xs">
-            Freelance WordPress & creative frontend developer building premium, performant websites worldwide.
-          </p>
+
+          {/* Sitemap */}
+          <div className="lg:col-span-3 grid grid-cols-2 gap-8">
+            <FooterCol title="Site" links={[["About", "#about"], ["Services", "#services"], ["Work", "#work"], ["FAQ", "#faq"]]} />
+            <FooterCol title="Skills" links={[["WordPress", "#skills"], ["Elementor", "#skills"], ["WooCommerce", "#skills"], ["React", "#skills"]]} />
+          </div>
+
+          {/* Contact card */}
+          <div className="lg:col-span-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">Get in touch</div>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="mailto:m.ahxsn@gmail.com" className="group flex items-center justify-between hover:text-ember transition">
+                  <span>m.ahxsn@gmail.com</span>
+                  <span className="text-muted-foreground group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+923039968120" className="group flex items-center justify-between hover:text-ember transition">
+                  <span>+92 303 9968120</span>
+                  <span className="text-muted-foreground group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </li>
+              <li className="flex items-center justify-between text-muted-foreground">
+                <span>Lahore, Punjab, Pakistan</span>
+                <span className="inline-flex items-center gap-1.5 text-xs">
+                  <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
+                  Available
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <FooterCol title="Navigate" links={[["About", "#about"], ["Skills", "#skills"], ["Work", "#work"], ["FAQ", "#faq"]]} />
-        <FooterCol title="Services" links={[["WordPress", "#skills"], ["Elementor", "#skills"], ["WooCommerce", "#skills"], ["React", "#skills"]]} />
-        <FooterCol title="Contact" links={[["hello@ahsan.dev", "mailto:hello@ahsan.dev"], ["LinkedIn", "#"], ["GitHub", "#"], ["Upwork", "#"]]} />
       </div>
       <div className="border-t border-foreground/10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
-          <span>© {new Date().getFullYear()} Ahsan. Crafted with obsession.</span>
-          <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
-            Currently available for Q3
-          </span>
+          <span>© {new Date().getFullYear()} Muhammad Ahsan. All rights reserved.</span>
+          <span>Designed &amp; developed with obsession in Lahore.</span>
         </div>
       </div>
     </footer>
@@ -619,10 +679,19 @@ function Page() {
         <About />
         <Skills />
         <Section
+          id="services"
+          eyebrow="What I do"
+          title={<>Specialized <span className="text-gradient-ember">services.</span></>}
+          sub="From concept to launch — every service built for performance, conversion and growth."
+        >
+          <Services />
+        </Section>
+        <CTA />
+        <Section
           id="work"
           eyebrow="Selected work"
           title={<>Recent <span className="text-gradient-ember">projects.</span></>}
-          sub="Hover any card — the website screenshot rises to reveal the full design."
+          sub="Hover any card — the full-page design auto-scrolls top-to-bottom inside the frame."
         >
           <ProjectShowcase />
         </Section>
@@ -630,7 +699,7 @@ function Page() {
           id="testimonials"
           eyebrow="Client love"
           title={<>Trusted by <span className="text-gradient-ember">founders & studios.</span></>}
-          sub="Thirty-four reviews from clients across four continents. Real names. Real outcomes."
+          sub="Real reviews from clients across four continents. Hover the marquee to pause."
         >
           <Testimonials />
         </Section>
@@ -644,7 +713,6 @@ function Page() {
         >
           <FAQ />
         </Section>
-        <CTA />
         <Contact />
       </main>
       <Footer />
