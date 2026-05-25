@@ -206,6 +206,14 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
 @keyframes float-slow {
   0%,100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-18px) rotate(6deg); }
@@ -213,4 +221,13 @@
 @keyframes pulse-glow {
   0%,100% { opacity: 0.45; transform: scale(1); }
   50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+/* Pause marquee on hover (group .group within .marquee-mask). */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.marquee-mask:hover > div {
+  animation-play-state: paused !important;
 }

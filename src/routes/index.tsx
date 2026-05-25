@@ -9,6 +9,7 @@ import { HeroScene } from "@/components/portfolio/HeroScene";
 import { FloatingSkills, SKILLS } from "@/components/portfolio/FloatingSkills";
 import { ProjectShowcase } from "@/components/portfolio/ProjectShowcase";
 import { Testimonials } from "@/components/portfolio/Testimonials";
+import { Services } from "@/components/portfolio/Services";
 import { FAQ } from "@/components/portfolio/FAQ";
 import { STATS, REGIONS } from "@/components/portfolio/data";
 
@@ -16,10 +17,10 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Ahsan — Freelance WordPress & Creative Frontend Developer" },
-      { name: "description", content: "Premium WordPress, Elementor, WooCommerce and React development. Fast, SEO-optimized, beautifully animated websites built for global clients." },
-      { property: "og:title", content: "Ahsan — Freelance WordPress & Creative Frontend Developer" },
-      { property: "og:description", content: "Premium WordPress, Elementor, WooCommerce and React development. Fast, SEO-optimized, beautifully animated websites built for global clients." },
+      { title: "Muhammad Ahsan — Expert WordPress Developer | Lahore, PK" },
+      { name: "description", content: "Muhammad Ahsan (M-Ahxsn) — WordPress, Elementor, WooCommerce and React specialist. Fast, SEO-optimized, beautifully animated websites for clients worldwide." },
+      { property: "og:title", content: "Muhammad Ahsan — Expert WordPress Developer" },
+      { property: "og:description", content: "Pixel-perfect WordPress, WooCommerce and React builds. Core Web Vitals in the green. Available worldwide." },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [{
@@ -27,10 +28,15 @@ export const Route = createFileRoute("/")({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Person",
-        name: "Ahsan",
-        jobTitle: "Freelance WordPress & Creative Frontend Developer",
+        name: "Muhammad Ahsan",
+        alternateName: "M-Ahxsn",
+        jobTitle: "Expert WordPress & Creative Frontend Developer",
+        email: "m.ahxsn@gmail.com",
+        telephone: "+92 303 9968120",
+        address: { "@type": "PostalAddress", addressLocality: "Lahore", addressRegion: "Punjab", addressCountry: "PK" },
         url: "/",
-        knowsAbout: ["WordPress", "Elementor", "WooCommerce", "React", "SEO", "UI/UX", "Tailwind CSS"],
+        sameAs: ["https://linkedin.com/in/M-Ahxsn", "https://github.com/M-Ahxsn", "https://wa.me/923039968120"],
+        knowsAbout: ["WordPress", "Elementor", "WooCommerce", "React", "SEO", "UI/UX", "Tailwind CSS", "Figma to WordPress"],
       }),
     }],
   }),
@@ -129,20 +135,20 @@ function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-foreground/15 glass px-4 py-2 text-xs uppercase tracking-[0.18em] text-muted-foreground"
           >
             <span className="h-2 w-2 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
-            Available for select projects · Q3
+            Available for new projects · Immediate start
           </motion.div>
           <motion.h1
             initial="hidden" animate="show"
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
             className="mt-7 text-[clamp(2.6rem,7vw,5.6rem)] font-semibold leading-[0.98] tracking-tight"
           >
-            {["Crafting", "websites", "that", "feel", "alive."].map((w, i) => (
+            {["Expert", "WordPress", "Developer", "—", "shipped."].map((w, i) => (
               <motion.span
                 key={i}
                 variants={{ hidden: { y: 60, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
                 className="inline-block mr-3"
               >
-                {w === "alive." ? <span className="text-gradient-ember">{w}</span> : w}
+                {w === "shipped." ? <span className="text-gradient-ember">{w}</span> : w}
               </motion.span>
             ))}
           </motion.h1>
@@ -150,19 +156,20 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-7 max-w-xl text-lg text-muted-foreground leading-relaxed"
           >
-            I'm <span className="text-foreground font-medium">Ahsan</span> — a freelance WordPress &amp; creative
-            frontend developer building fast, beautifully animated websites for founders, studios and global brands.
+            Hi, I'm <span className="text-foreground font-medium">Muhammad Ahsan</span> — a WordPress
+            specialist crafting high-converting, lightning-fast and SEO-optimized digital experiences.
+            Sites that <span className="text-foreground">actually convert.</span>
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
             <a href="#contact" className="group relative inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3.5 text-sm font-medium ring-ember-glow">
-              Start a project
+              Get free consultation
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a href="#work" className="inline-flex items-center gap-2 rounded-full glass px-6 py-3.5 text-sm font-medium hover:ring-ember-glow transition">
-              See selected work
+              View portfolio
             </a>
           </motion.div>
 
@@ -438,22 +445,25 @@ function CTA() {
         <div className="relative max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-foreground/15 glass px-3 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
-            Taking 2 new projects this quarter
+            Booking new projects · Immediate start
           </div>
           <h2 className="mt-6 text-4xl sm:text-6xl font-semibold tracking-tight leading-[1.05]">
-            Let's build something <span className="text-gradient-ember">unforgettable.</span>
+            Ready to launch a site that <span className="text-gradient-ember">actually converts?</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground max-w-2xl">
-            Tell me about your brand and where you want it in twelve months. I'll come back with a clear plan,
-            a realistic timeline and a fixed price.
+            Tell me about your project — goals, timeline and budget. I'll come back within one business day
+            with a clear plan and a fixed price. No agency overhead, no surprises.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-4 text-sm font-medium hover:opacity-90 transition">
-              Start the conversation
-              <span>→</span>
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-7 py-4 text-sm font-semibold hover:opacity-90 transition">
+              Hire Me
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <a href="mailto:hello@ahsan.dev" className="inline-flex items-center gap-2 rounded-full glass px-7 py-4 text-sm font-medium hover:ring-ember-glow transition">
-              hello@ahsan.dev
+            <a href="https://wa.me/923039968120" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full glass px-7 py-4 text-sm font-medium hover:ring-ember-glow transition">
+              WhatsApp · +92 303 9968120
+            </a>
+            <a href="mailto:m.ahxsn@gmail.com" className="inline-flex items-center gap-2 rounded-full glass px-7 py-4 text-sm font-medium hover:ring-ember-glow transition">
+              m.ahxsn@gmail.com
             </a>
           </div>
         </div>
@@ -504,16 +514,26 @@ function Contact() {
         <aside className="lg:col-span-5 space-y-5">
           <div className="rounded-3xl border border-foreground/10 bg-card p-6 sm:p-8">
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Direct</div>
-            <a href="mailto:hello@ahsan.dev" className="mt-2 block text-2xl font-medium hover:text-ember transition">hello@ahsan.dev</a>
+            <a href="mailto:m.ahxsn@gmail.com" className="mt-2 block text-2xl font-medium hover:text-ember transition">m.ahxsn@gmail.com</a>
             <div className="mt-1 text-sm text-muted-foreground">Replies within one business day.</div>
+            <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
+              <div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">Phone</div>
+                <a href="tel:+923039968120" className="hover:text-ember transition">+92 303 9968120</a>
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">Location</div>
+                <div>Lahore, Punjab, PK</div>
+              </div>
+            </div>
           </div>
           <div className="rounded-3xl border border-foreground/10 bg-card p-6 sm:p-8 space-y-4">
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Elsewhere</div>
             {[
-              { l: "LinkedIn", h: "#" },
-              { l: "GitHub", h: "#" },
-              { l: "Dribbble", h: "#" },
-              { l: "Upwork", h: "#" },
+              { l: "LinkedIn · M-Ahxsn", h: "https://linkedin.com/in/M-Ahxsn" },
+              { l: "GitHub · M-Ahxsn", h: "https://github.com/M-Ahxsn" },
+              { l: "WhatsApp", h: "https://wa.me/923039968120" },
+              { l: "Email", h: "mailto:m.ahxsn@gmail.com" },
             ].map((s) => (
               <a key={s.l} href={s.h} className="flex items-center justify-between group">
                 <span className="text-lg group-hover:text-ember transition">{s.l}</span>
@@ -543,30 +563,90 @@ function Field({ label, name, type = "text", placeholder, required = true }: { l
   );
 }
 
-function Footer() {
+function Social({ href, label, path }: { href: string; label: string; path: string }) {
   return (
-    <footer className="relative border-t border-foreground/10 mt-10">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        <div>
-          <div className="flex items-center gap-2 font-semibold">
-            <span className="h-8 w-8 rounded-xl bg-foreground text-background grid place-items-center font-bold">A</span>
-            <span>Ahsan<span className="text-ember">.</span></span>
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={label}
+      title={label}
+      className="h-10 w-10 grid place-items-center rounded-xl border border-foreground/15 text-foreground/70 hover:text-ember hover:border-ember/50 hover:ring-ember-glow transition"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d={path} />
+      </svg>
+    </a>
+  );
+}
+
+function Footer() {
+  const SOCIALS = [
+    { label: "LinkedIn", href: "https://linkedin.com/in/M-Ahxsn", path: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9Z" },
+    { label: "GitHub", href: "https://github.com/M-Ahxsn", path: "M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.63-1.35-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.12 2.5.35 1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.93.36.31.68.93.68 1.88v2.78c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" },
+    { label: "WhatsApp", href: "https://wa.me/923039968120", path: "M20.5 3.5A11 11 0 0 0 3.4 17.3L2 22l4.8-1.3a11 11 0 0 0 5.2 1.3 11 11 0 0 0 8.5-18.5Zm-8.5 17a9 9 0 0 1-4.6-1.3l-.3-.2-2.9.8.8-2.8-.2-.3a9 9 0 1 1 7.2 3.8Zm5-6.7c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.2s-.7.9-.8 1c-.1.2-.3.2-.6.1a7.4 7.4 0 0 1-3.6-3.2c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5 0-.8.4-.3.4-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.6 2 .8 2.8.8 3.8.7.6-.1 1.6-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.3Z" },
+    { label: "Email", href: "mailto:m.ahxsn@gmail.com", path: "M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2v.3l8 5 8-5V7H4Zm16 2.4-7.4 4.6a1 1 0 0 1-1.2 0L4 9.4V17h16V9.4Z" },
+  ];
+  return (
+    <footer className="relative mt-20 border-t border-foreground/10 bg-gradient-to-b from-background to-surface-2/40">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ember/60 to-transparent" />
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-16">
+        <div className="grid lg:grid-cols-12 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-5">
+            <a href="#top" className="inline-flex items-center gap-2.5 font-semibold">
+              <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl bg-foreground text-background font-bold">
+                A
+                <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-br from-ember to-ember-glow opacity-70 blur" />
+              </span>
+              <span className="text-lg">Muhammad Ahsan<span className="text-ember">.</span></span>
+            </a>
+            <p className="mt-5 text-sm text-muted-foreground max-w-sm leading-relaxed">
+              Expert WordPress &amp; creative frontend developer crafting premium, performant
+              websites for founders, studios and global brands.
+            </p>
+            <div className="mt-6 flex items-center gap-3">
+              {SOCIALS.map((s) => <Social key={s.label} {...s} />)}
+            </div>
           </div>
-          <p className="mt-3 text-sm text-muted-foreground max-w-xs">
-            Freelance WordPress & creative frontend developer building premium, performant websites worldwide.
-          </p>
+
+          {/* Sitemap */}
+          <div className="lg:col-span-3 grid grid-cols-2 gap-8">
+            <FooterCol title="Site" links={[["About", "#about"], ["Services", "#services"], ["Work", "#work"], ["FAQ", "#faq"]]} />
+            <FooterCol title="Skills" links={[["WordPress", "#skills"], ["Elementor", "#skills"], ["WooCommerce", "#skills"], ["React", "#skills"]]} />
+          </div>
+
+          {/* Contact card */}
+          <div className="lg:col-span-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">Get in touch</div>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="mailto:m.ahxsn@gmail.com" className="group flex items-center justify-between hover:text-ember transition">
+                  <span>m.ahxsn@gmail.com</span>
+                  <span className="text-muted-foreground group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+923039968120" className="group flex items-center justify-between hover:text-ember transition">
+                  <span>+92 303 9968120</span>
+                  <span className="text-muted-foreground group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </li>
+              <li className="flex items-center justify-between text-muted-foreground">
+                <span>Lahore, Punjab, Pakistan</span>
+                <span className="inline-flex items-center gap-1.5 text-xs">
+                  <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
+                  Available
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <FooterCol title="Navigate" links={[["About", "#about"], ["Skills", "#skills"], ["Work", "#work"], ["FAQ", "#faq"]]} />
-        <FooterCol title="Services" links={[["WordPress", "#skills"], ["Elementor", "#skills"], ["WooCommerce", "#skills"], ["React", "#skills"]]} />
-        <FooterCol title="Contact" links={[["hello@ahsan.dev", "mailto:hello@ahsan.dev"], ["LinkedIn", "#"], ["GitHub", "#"], ["Upwork", "#"]]} />
       </div>
       <div className="border-t border-foreground/10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
-          <span>© {new Date().getFullYear()} Ahsan. Crafted with obsession.</span>
-          <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
-            Currently available for Q3
-          </span>
+          <span>© {new Date().getFullYear()} Muhammad Ahsan. All rights reserved.</span>
+          <span>Designed &amp; developed with obsession in Lahore.</span>
         </div>
       </div>
     </footer>
@@ -599,10 +679,19 @@ function Page() {
         <About />
         <Skills />
         <Section
+          id="services"
+          eyebrow="What I do"
+          title={<>Specialized <span className="text-gradient-ember">services.</span></>}
+          sub="From concept to launch — every service built for performance, conversion and growth."
+        >
+          <Services />
+        </Section>
+        <CTA />
+        <Section
           id="work"
           eyebrow="Selected work"
           title={<>Recent <span className="text-gradient-ember">projects.</span></>}
-          sub="Hover any card — the website screenshot rises to reveal the full design."
+          sub="Hover any card — the full-page design auto-scrolls top-to-bottom inside the frame."
         >
           <ProjectShowcase />
         </Section>
@@ -610,7 +699,7 @@ function Page() {
           id="testimonials"
           eyebrow="Client love"
           title={<>Trusted by <span className="text-gradient-ember">founders & studios.</span></>}
-          sub="Thirty-four reviews from clients across four continents. Real names. Real outcomes."
+          sub="Real reviews from clients across four continents. Hover the marquee to pause."
         >
           <Testimonials />
         </Section>
@@ -624,7 +713,6 @@ function Page() {
         >
           <FAQ />
         </Section>
-        <CTA />
         <Contact />
       </main>
       <Footer />

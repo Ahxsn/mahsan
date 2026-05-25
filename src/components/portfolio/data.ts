@@ -1,50 +1,95 @@
 export const PROJECTS = [
   {
+    title: "Autozne Car-Rental",
+    category: "E-commerce · Booking",
+    desc: "Premium car-rental platform with automated booking, dynamic pricing and a fleet management dashboard.",
+    accent: "#ef4444",
+    tag: "WooCommerce",
+    href: "https://ahxsn-s-portfolios.vercel.app/",
+  },
+  {
+    title: "Eduvalt School System",
+    category: "EdTech · Portal",
+    desc: "Comprehensive educational portal with student dashboard, attendance, grades and interactive learning modules.",
+    accent: "#f43f5e",
+    tag: "WordPress",
+    href: "https://ahxsn-s-portfolios.vercel.app/",
+  },
+  {
+    title: "Dr's Appointment System",
+    category: "Healthcare · SaaS",
+    desc: "Streamlined appointment platform with a secure patient portal, automated reminders and SMS confirmations.",
+    accent: "#fb7185",
+    tag: "Custom Build",
+    href: "https://ahxsn-s-portfolios.vercel.app/",
+  },
+  {
+    title: "Rehabilitate Hub",
+    category: "Healthcare · WordPress",
+    desc: "Premium healthcare solution blending medical aesthetics with a conversion-focused, accessibility-first design.",
+    accent: "#dc2626",
+    tag: "Elementor Pro",
+    href: "https://ahxsn-s-portfolios.vercel.app/",
+  },
+  {
     title: "Lumière Atelier",
     category: "Luxury E-commerce",
     desc: "WooCommerce storefront for a Parisian fragrance house with bespoke checkout and cinematic product reveals.",
-    accent: "#ff3a3a",
-    preview: { tag: "WooCommerce", price: "€189", item: "Velvet Noir EDP" },
+    accent: "#e11d48",
+    tag: "WooCommerce",
+    href: "#",
   },
   {
     title: "Northpeak Capital",
     category: "Corporate WordPress",
     desc: "Investor-grade WordPress build with custom Gutenberg blocks, multilingual content and 98 PageSpeed score.",
-    accent: "#ef4444",
-    preview: { tag: "Finance", price: "$2.4B AUM", item: "Quarterly report" },
+    accent: "#f97316",
+    tag: "Finance",
+    href: "#",
+  },
+];
+
+export const SERVICES = [
+  {
+    n: "01",
+    title: "Figma to WordPress",
+    desc: "Pixel-perfect conversion of Figma designs into high-performance WordPress sites with smooth animations and flawless UX.",
+    icon: "figma",
   },
   {
-    title: "Orbit Studio",
-    category: "Creative Portfolio",
-    desc: "React + GSAP portfolio for a motion studio with WebGL hero and case study scroll narratives.",
-    accent: "#f43f5e",
-    preview: { tag: "React", price: "12 awards", item: "Featured case study" },
+    n: "02",
+    title: "PSD to WordPress",
+    desc: "Converting static PSD designs into dynamic, fully responsive WordPress themes with clean code and cross-browser support.",
+    icon: "layers",
   },
   {
-    title: "Pulse Health",
-    category: "Elementor Pro",
-    desc: "HIPAA-aware clinic site with appointment booking, integrated CRM and accessible UI components.",
-    accent: "#fb7185",
-    preview: { tag: "Elementor", price: "24/7", item: "Book consultation" },
+    n: "03",
+    title: "Advanced Elementor Dev",
+    desc: "Custom Elementor layouts, dynamic content and lightweight, manageable sites — full control without constant dev help.",
+    icon: "blocks",
   },
   {
-    title: "Forge & Anvil",
-    category: "Custom WooCommerce",
-    desc: "Made-to-order furniture store with 3D configurator, Stripe payments and global shipping logic.",
-    accent: "#dc2626",
-    preview: { tag: "Woo + 3D", price: "$1,290", item: "Oak lounge chair" },
+    n: "04",
+    title: "Scalable E-commerce",
+    desc: "Robust WooCommerce stores optimised for sales — secure payments, inventory management, built to grow with your business.",
+    icon: "shopping",
   },
   {
-    title: "Aurora SaaS",
-    category: "SaaS Marketing",
-    desc: "Conversion-tuned landing system with animated pricing, A/B testing and headless WordPress CMS.",
-    accent: "#e11d48",
-    preview: { tag: "SaaS", price: "+38% CVR", item: "Pricing experiment" },
+    n: "05",
+    title: "Speed & SEO Optimization",
+    desc: "Core Web Vitals in the green, technical SEO, schema markup and asset pipelines tuned for real-world performance.",
+    icon: "gauge",
+  },
+  {
+    n: "06",
+    title: "Maintenance & Care Plans",
+    desc: "Monthly updates, security monitoring, backups and on-demand changes so your site keeps performing for years.",
+    icon: "shield",
   },
 ];
 
 export const TESTIMONIALS = [
-  { name: "Daniel Hofmann", role: "Founder, Northpeak Capital", country: "Germany", text: "Ahsan delivered a finance-grade WordPress site that loads instantly and looks world-class. Communication was effortless from kickoff to launch." },
+  { name: "Daniel Hofmann", handle: "@dhofmann", role: "Founder, Northpeak Capital", country: "Germany", text: "Ahsan delivered a finance-grade WordPress site that loads instantly and looks world-class. Communication was effortless from kickoff to launch." },
   { name: "Émilie Laurent", role: "Creative Director", country: "France", text: "He understood our atelier brand on the first call. The WooCommerce experience he built genuinely feels like luxury — our customers tell us all the time." },
   { name: "Marcus Bell", role: "CTO, Aurora Labs", country: "United Kingdom", text: "We needed a developer who could think product, design and SEO together. Ahsan is that rare blend. PageSpeed went from 54 to 98." },
   { name: "Hiroshi Tanaka", role: "Product Lead", country: "Japan", text: "Pixel perfect on every breakpoint, including the awkward ones. Animations feel native, not bolted on. Easy 10/10." },
@@ -92,10 +137,10 @@ export const FAQS = [
 ];
 
 export const STATS = [
-  { value: "120+", label: "Websites shipped" },
-  { value: "8+ yrs", label: "Building for the web" },
-  { value: "34", label: "Countries served" },
-  { value: "98", label: "Avg. Lighthouse score" },
+  { value: "39+", label: "Projects shipped" },
+  { value: "28+", label: "Worldwide clients" },
+  { value: "5.0", label: "Avg. rating" },
+  { value: "2+", label: "Years experience" },
 ];
 
 export const REGIONS = [
