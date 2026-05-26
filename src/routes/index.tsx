@@ -458,46 +458,6 @@ function WhyChoose() {
   );
 }
 
-function GlobalArea() {
-  return (
-    <Section
-      id="global"
-      eyebrow="Where I work"
-      title={<>Built for clients <span className="text-gradient-ember">around the globe.</span></>}
-      sub="Remote-native since day one. Comfortable across timezones, currencies, languages and compliance requirements."
-    >
-      <div className="relative rounded-3xl border border-foreground/10 bg-card overflow-hidden p-10 sm:p-14">
-        <div className="absolute inset-0 grid-noise opacity-40" />
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[28rem] w-[28rem] rounded-full bg-ember/15 blur-3xl" />
-        <div className="relative grid sm:grid-cols-2 lg:grid-cols-5 gap-3 text-sm">
-          {REGIONS.map((r, i) => (
-            <motion.div
-              key={r}
-              initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.04 }}
-              className="glass rounded-xl px-4 py-3 flex items-center justify-between"
-            >
-              <span>{r}</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
-            </motion.div>
-          ))}
-        </div>
-        <div className="relative mt-10 grid sm:grid-cols-3 gap-6">
-          {[
-            { t: "Async-first", d: "Detailed Looms, written specs, async standups." },
-            { t: "Any stack handoff", d: "Hosting setup, DNS, analytics, CRM wiring." },
-            { t: "Multi-currency & i18n", d: "Stripe, WPML, RTL — comfortable with all of it." },
-          ].map((x) => (
-            <div key={x.t} className="rounded-2xl border border-foreground/10 p-5 bg-background/30">
-              <div className="font-medium">{x.t}</div>
-              <div className="text-sm text-muted-foreground mt-1">{x.d}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
-
 function CTA() {
   return (
     <Section id="cta" className="!py-32">
@@ -537,6 +497,34 @@ function CTA() {
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+    setError(null);
+    try {
+      const form = e.currentTarget;
+      const data = new FormData(form);
+      const res = await fetch("https://formspree.io/f/xnjbyrpg", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setSent(true);
+        form.reset();
+      } else {
+        setError("Could not send. Please email m.ahxsn@gmail.com directly.");
+      }
+    } catch {
+      setError("Network issue. Please email m.ahxsn@gmail.com directly.");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <Section
       id="contact"
@@ -547,31 +535,38 @@ function Contact() {
       <div className="grid lg:grid-cols-12 gap-10">
         <div className="lg:col-span-7">
           <form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+            onSubmit={onSubmit}
             className="rounded-3xl border border-foreground/10 bg-card p-6 sm:p-8 space-y-5"
           >
             <div className="grid sm:grid-cols-2 gap-5">
-              <Field label="Your name" name="name" placeholder="Jane Doe" />
-              <Field label="Email" name="email" type="email" placeholder="jane@brand.com" />
+              <Field label="Full name" name="name" placeholder="e.g. Sarah Thompson" />
+              <Field label="Work email" name="email" type="email" placeholder="e.g. sarah@yourcompany.com" />
             </div>
-            <Field label="Company / brand" name="company" placeholder="Optional" required={false} />
-            <Field label="Project type" name="type" placeholder="WordPress, WooCommerce, React…" />
+            <div className="grid sm:grid-cols-2 gap-5">
+              <Field label="Company or brand" name="company" placeholder="e.g. Acme Studio (optional)" required={false} />
+              <Field label="Budget range (USD)" name="budget" placeholder="e.g. 2,500 to 8,000" required={false} />
+            </div>
+            <Field label="Project type" name="project_type" placeholder="WordPress build, Custom plugin, Landing page, WooCommerce store" />
             <div>
               <label className="block text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Project details</label>
               <textarea
+                name="message"
                 required
                 rows={5}
-                placeholder="Goals, timeline, budget range, links…"
+                placeholder="Briefly describe your goals, ideal launch date and any reference links you'd like me to review."
                 className="w-full rounded-xl border border-foreground/15 bg-background/60 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ember/60 transition"
               />
             </div>
+            <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
             <button
               type="submit"
+              disabled={sending}
               className="group inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3.5 text-sm font-medium hover:opacity-90 transition ring-ember-glow"
             >
-              {sent ? "Sent — talk soon ✦" : "Send inquiry"}
+              {sent ? "Sent. Talk soon ✦" : sending ? "Sending..." : "Send inquiry"}
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </button>
+            {error && <p className="text-sm text-destructive">{error}</p>}
           </form>
         </div>
         <aside className="lg:col-span-5 space-y-5">
@@ -579,22 +574,22 @@ function Contact() {
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Direct</div>
             <a href="mailto:m.ahxsn@gmail.com" className="mt-2 block text-2xl font-medium hover:text-ember transition">m.ahxsn@gmail.com</a>
             <div className="mt-1 text-sm text-muted-foreground">Replies within one business day.</div>
-            <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
+            <div className="mt-5 grid grid-cols-1 gap-3 text-sm">
               <div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">Phone</div>
-                <a href="tel:+923039968120" className="hover:text-ember transition">+92 303 9968120</a>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">WhatsApp</div>
+                <a href="https://wa.me/923039968120" target="_blank" rel="noreferrer" className="hover:text-ember transition">+92 303 9968120</a>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">Location</div>
-                <div>Lahore, Punjab, PK</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">Availability</div>
+                <div>Booking new projects worldwide</div>
               </div>
             </div>
           </div>
           <div className="rounded-3xl border border-foreground/10 bg-card p-6 sm:p-8 space-y-4">
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Elsewhere</div>
             {[
-              { l: "LinkedIn · M-Ahxsn", h: "https://linkedin.com/in/M-Ahxsn" },
-              { l: "GitHub · M-Ahxsn", h: "https://github.com/M-Ahxsn" },
+              { l: "LinkedIn · m-ahxsn", h: "https://www.linkedin.com/in/m-ahxsn" },
+              { l: "GitHub · Ahxsn", h: "https://github.com/Ahxsn" },
               { l: "WhatsApp", h: "https://wa.me/923039968120" },
               { l: "Email", h: "mailto:m.ahxsn@gmail.com" },
             ].map((s) => (
@@ -645,8 +640,8 @@ function Social({ href, label, path }: { href: string; label: string; path: stri
 
 function Footer() {
   const SOCIALS = [
-    { label: "LinkedIn", href: "https://linkedin.com/in/M-Ahxsn", path: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9Z" },
-    { label: "GitHub", href: "https://github.com/M-Ahxsn", path: "M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.63-1.35-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.12 2.5.35 1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.93.36.31.68.93.68 1.88v2.78c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/m-ahxsn", path: "M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6V21h-4v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9Z" },
+    { label: "GitHub", href: "https://github.com/Ahxsn", path: "M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.9 1.54 2.36 1.1 2.94.84.09-.65.35-1.1.63-1.35-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.12 2.5.35 1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.93.36.31.68.93.68 1.88v2.78c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" },
     { label: "WhatsApp", href: "https://wa.me/923039968120", path: "M20.5 3.5A11 11 0 0 0 3.4 17.3L2 22l4.8-1.3a11 11 0 0 0 5.2 1.3 11 11 0 0 0 8.5-18.5Zm-8.5 17a9 9 0 0 1-4.6-1.3l-.3-.2-2.9.8.8-2.8-.2-.3a9 9 0 1 1 7.2 3.8Zm5-6.7c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.2s-.7.9-.8 1c-.1.2-.3.2-.6.1a7.4 7.4 0 0 1-3.6-3.2c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5 0-.8.4-.3.4-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.3 4.6 2 .8 2.8.8 3.8.7.6-.1 1.6-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.3Z" },
     { label: "Email", href: "mailto:m.ahxsn@gmail.com", path: "M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2v.3l8 5 8-5V7H4Zm16 2.4-7.4 4.6a1 1 0 0 1-1.2 0L4 9.4V17h16V9.4Z" },
   ];
@@ -658,14 +653,14 @@ function Footer() {
           {/* Brand */}
           <div className="lg:col-span-5">
             <a href="#top" className="inline-flex items-center gap-2.5 font-semibold">
-              <span className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl bg-foreground text-background font-bold">
-                A
-                <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-br from-ember to-ember-glow opacity-70 blur" />
+              <span className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-foreground p-1.5 ring-1 ring-foreground/20">
+                <img src={logoImg} alt="" aria-hidden="true" className="h-full w-full object-contain" />
+                <span className="absolute -inset-0.5 -z-10 rounded-xl bg-gradient-to-br from-ember to-ember-glow opacity-60 blur" />
               </span>
-              <span className="text-lg">Muhammad Ahsan<span className="text-ember">.</span></span>
+              <span className="text-lg">Ahsan<span className="text-ember">.</span></span>
             </a>
             <p className="mt-5 text-sm text-muted-foreground max-w-sm leading-relaxed">
-              Expert WordPress &amp; creative frontend developer crafting premium, performant
+              Expert WordPress and creative frontend developer crafting premium, performant
               websites for founders, studios and global brands.
             </p>
             <div className="mt-6 flex items-center gap-3">
@@ -690,16 +685,27 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+923039968120" className="group flex items-center justify-between hover:text-ember transition">
-                  <span>+92 303 9968120</span>
+                <a href="https://wa.me/923039968120" target="_blank" rel="noreferrer" className="group flex items-center justify-between hover:text-ember transition">
+                  <span>WhatsApp · +92 303 9968120</span>
+                  <span className="text-muted-foreground group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Ahxsn" target="_blank" rel="noreferrer" className="group flex items-center justify-between hover:text-ember transition">
+                  <span>github.com/Ahxsn</span>
+                  <span className="text-muted-foreground group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/m-ahxsn" target="_blank" rel="noreferrer" className="group flex items-center justify-between hover:text-ember transition">
+                  <span>linkedin.com/in/m-ahxsn</span>
                   <span className="text-muted-foreground group-hover:translate-x-1 transition-transform">→</span>
                 </a>
               </li>
               <li className="flex items-center justify-between text-muted-foreground">
-                <span>Lahore, Punjab, Pakistan</span>
                 <span className="inline-flex items-center gap-1.5 text-xs">
                   <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2s_ease-in-out_infinite]" />
-                  Available
+                  Available for new projects worldwide
                 </span>
               </li>
             </ul>
@@ -709,7 +715,7 @@ function Footer() {
       <div className="border-t border-foreground/10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
           <span>© {new Date().getFullYear()} Muhammad Ahsan. All rights reserved.</span>
-          <span>Designed &amp; developed with obsession in Lahore.</span>
+          <span>Designed and developed with obsession.</span>
         </div>
       </div>
     </footer>
@@ -732,6 +738,27 @@ function FooterCol({ title, links }: { title: string; links: [string, string][] 
 }
 
 function Page() {
+  // Disable right-click site-wide (and common save shortcuts).
+  useEffect(() => {
+    const blockContext = (e: MouseEvent) => e.preventDefault();
+    const blockKeys = (e: KeyboardEvent) => {
+      const k = e.key.toLowerCase();
+      if (
+        (e.ctrlKey || e.metaKey) && ["s", "u", "c"].includes(k) ||
+        k === "f12" ||
+        ((e.ctrlKey || e.metaKey) && e.shiftKey && ["i", "j", "c"].includes(k))
+      ) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("contextmenu", blockContext);
+    document.addEventListener("keydown", blockKeys);
+    return () => {
+      document.removeEventListener("contextmenu", blockContext);
+      document.removeEventListener("keydown", blockKeys);
+    };
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Cursor />
@@ -745,7 +772,7 @@ function Page() {
           id="services"
           eyebrow="What I do"
           title={<>Specialized <span className="text-gradient-ember">services.</span></>}
-          sub="From concept to launch — every service built for performance, conversion and growth."
+          sub="From concept to launch. Every service built for performance, conversion and growth."
         >
           <Services />
         </Section>
@@ -754,25 +781,24 @@ function Page() {
           id="work"
           eyebrow="Selected work"
           title={<>Recent <span className="text-gradient-ember">projects.</span></>}
-          sub="Hover any card — the full-page design auto-scrolls top-to-bottom inside the frame."
+          sub="Hover any card. The full-page design auto-scrolls top to bottom inside the frame."
         >
           <ProjectShowcase />
         </Section>
         <Section
           id="testimonials"
           eyebrow="Client love"
-          title={<>Trusted by <span className="text-gradient-ember">founders & studios.</span></>}
+          title={<>Trusted by <span className="text-gradient-ember">founders and studios.</span></>}
           sub="Real reviews from clients across four continents. Hover the marquee to pause."
         >
           <Testimonials />
         </Section>
         <WhyChoose />
-        <GlobalArea />
         <Section
           id="faq"
           eyebrow="Questions"
           title={<>Frequently <span className="text-gradient-ember">asked.</span></>}
-          sub="Everything you'd usually ask on the first call — answered up front."
+          sub="Everything you would usually ask on the first call, answered up front."
         >
           <FAQ />
         </Section>
