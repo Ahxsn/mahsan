@@ -143,7 +143,7 @@ function Hero() {
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
             className="mt-7 text-[clamp(2.6rem,7vw,5.6rem)] font-semibold leading-[0.98] tracking-tight"
           >
-            {["Expert", "WordPress", "Developer", "—", "shipped."].map((w, i) => (
+            {["Expert", "WordPress", "Developer,", "shipped."].map((w, i) => (
               <motion.span
                 key={i}
                 variants={{ hidden: { y: 60, opacity: 0 }, show: { y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}
@@ -157,9 +157,9 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-7 max-w-xl text-lg text-muted-foreground leading-relaxed"
           >
-            Hi, I'm <span className="text-foreground font-medium">Muhammad Ahsan</span> — a WordPress
-            specialist crafting high-converting, lightning-fast and SEO-optimized digital experiences.
-            Sites that <span className="text-foreground">actually convert.</span>
+            Hi, I'm <span className="text-foreground font-medium">Muhammad Ahsan</span>, a WordPress,
+            Elementor and custom plugin specialist engineering high-converting, lightning-fast and SEO-optimized
+            digital experiences. Sites that <span className="text-foreground">actually convert.</span>
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
@@ -231,14 +231,56 @@ function Hero() {
 }
 
 function Marquee() {
-  const items = ["WordPress", "Elementor", "WooCommerce", "React", "Tailwind", "Framer Motion", "SEO", "Core Web Vitals", "UI/UX", "Figma", "Headless CMS", "Performance"];
+  // Each item has a matching SVG glyph rendered identically across the ribbon.
+  const items: { name: string; color: string; icon: React.ReactNode }[] = [
+    {
+      name: "WordPress", color: "#21759B",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-8.6 10a8.5 8.5 0 0 1 .7-3.4l4.7 12.9A8.6 8.6 0 0 1 3.4 12Zm8.6 8.6c-.8 0-1.6-.1-2.4-.4l2.5-7.4 2.6 7.1c-.8.5-1.7.7-2.7.7Zm1.2-12.6c.5 0 1-.1 1-.1.4 0 .4-.8 0-.8 0 0-1.5.1-2.4.1l-2.3-.1c-.5 0-.5.8 0 .8 0 0 .5.1.9.1l1.3 3.6-1.9 5.7L5.7 8c.4 0 .9-.1.9-.1.5 0 .4-.8 0-.8 0 0-1.4.1-2.4.1A8.6 8.6 0 0 1 12 3.4c2.4 0 4.5 1 6.1 2.5h-.4c-.8 0-1.4.7-1.4 1.4 0 .7.4 1.3.8 1.9.3.6.7 1.4.7 2.5 0 .8-.3 1.6-.7 2.7l-.9 2.9L13 8Zm2.5 12.1L18 14c.6-1.6.8-2.9.8-4.1l-.1-.7a8.6 8.6 0 0 1-3.5 10.9Z" /></svg>
+      ),
+    },
+    {
+      name: "Landing Pages", color: "#f97316",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 4v10h16V8H4Zm2 2h7v2H6v-2Zm0 4h5v2H6v-2Zm10-2h2v6h-2v-6Z" /></svg>
+      ),
+    },
+    {
+      name: "E-commerce Sites", color: "#7F54B3",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M3 4h2.2l.6 2H21l-2.5 8.5a2 2 0 0 1-1.9 1.5H8.1a2 2 0 0 1-2-1.6L4.2 4.5 3 4Zm5 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm9 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" /></svg>
+      ),
+    },
+    {
+      name: "Elementor", color: "#92003B",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM9 7.5h1.5v9H9v-9Zm3.2 0H17V9h-4.8V7.5Zm0 3.7H17v1.6h-4.8v-1.6Zm0 3.8H17v1.5h-4.8V15Z" /></svg>
+      ),
+    },
+    {
+      name: "Custom Themes", color: "#a855f7",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M12 2a10 10 0 0 0-1 19.95c.5.06.9-.36.9-.86v-1.7c-3 .65-3.6-1.45-3.6-1.45A9.5 9.5 0 0 1 12 12a10 10 0 0 0 0-10Zm-5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm3-5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm3 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" /></svg>
+      ),
+    },
+    {
+      name: "Custom Plugins", color: "#0ea5e9",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M14 2a2 2 0 0 0-2 2v2H8a2 2 0 0 0-2 2v4H4a2 2 0 1 0 0 4h2v4a2 2 0 0 0 2 2h4v-2a2 2 0 1 1 4 0v2h4a2 2 0 0 0 2-2v-4h-2a2 2 0 1 1 0-4h2V8a2 2 0 0 0-2-2h-4V4a2 2 0 0 0-2-2Z" /></svg>
+      ),
+    },
+  ];
+  const doubled = [...items, ...items];
   return (
-    <div className="relative overflow-hidden border-y border-foreground/10 py-6 bg-surface">
-      <div className="flex marquee-track gap-12 whitespace-nowrap text-2xl sm:text-3xl font-semibold tracking-tight">
-        {[...items, ...items].map((w, i) => (
-          <span key={i} className="flex items-center gap-12">
-            <span className={i % 3 === 0 ? "text-gradient-ember" : "text-foreground/70"}>{w}</span>
-            <span className="text-ember">✦</span>
+    <div className="relative overflow-hidden border-y border-foreground/10 py-7 bg-surface">
+      <div className="flex marquee-track gap-14 whitespace-nowrap text-2xl sm:text-3xl font-semibold tracking-tight">
+        {doubled.map((w, i) => (
+          <span key={i} className="flex items-center gap-5 shrink-0">
+            <span className="grid place-items-center h-10 w-10 rounded-xl glass" style={{ color: w.color }}>
+              {w.icon}
+            </span>
+            <span className={i % 3 === 0 ? "text-gradient-ember" : "text-foreground/85"}>{w.name}</span>
+            <span className="text-ember/70 text-xl">✦</span>
           </span>
         ))}
       </div>
@@ -251,52 +293,72 @@ function About() {
     <Section
       id="about"
       eyebrow="About"
-      title={<>Senior craft, freelance <span className="text-gradient-ember">flexibility.</span></>}
-      sub="I help founders and agencies turn ideas into websites people actually remember. Eight years of WordPress, React and motion work — focused on speed, clarity and conversion."
+      title={<>Engineered craft, executive <span className="text-gradient-ember">flexibility.</span></>}
+      sub="A specialist partner for founders, agencies and enterprises building serious digital products. Strategic, deliberate and built to perform under real-world load."
     >
       <div className="grid lg:grid-cols-12 gap-10 items-start">
+        <div className="lg:col-span-7 order-2 lg:order-1 space-y-5 text-lg text-foreground/85 leading-relaxed">
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            I am a senior WordPress and frontend engineer specialising in the end-to-end delivery of premium
+            digital platforms. My practice spans custom theme architecture, advanced Elementor systems, bespoke
+            plugin engineering, WooCommerce commerce builds and high-performance React experiences.
+          </motion.p>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
+            Every engagement is approached with a measurable mandate: maximise conversion, reduce technical
+            debt, and ship sites that meet enterprise standards for speed, security, accessibility and search
+            visibility. Strategy, design execution and engineering are tightly coupled under one accountable owner.
+          </motion.p>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
+            The result is a partner that operates with the discipline of an agency, the velocity of a solo
+            specialist and the long-term commitment of an in-house lead. Sites built for years of compounding return.
+          </motion.p>
+          <motion.aside
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1 }}
+            className="rounded-3xl border border-foreground/10 bg-card p-6 sm:p-8 ring-ember-glow"
+          >
+            <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">Core competencies</div>
+            <ul className="grid sm:grid-cols-2 gap-4">
+              {[
+                { t: "WordPress & Elementor", d: "Custom themes, block patterns and locked-down editor experiences." },
+                { t: "Custom Plugins", d: "Purpose-built functionality engineered for security and scale." },
+                { t: "WooCommerce", d: "Storefronts that load fast and check out faster." },
+                { t: "Landing Pages", d: "High-conversion, CRO-optimised pages built for paid traffic." },
+                { t: "React & Motion", d: "Cinematic frontends with measurable runtime performance." },
+                { t: "SEO & Speed", d: "Technical SEO, schema and Core Web Vitals in the green." },
+              ].map((x) => (
+                <li key={x.t} className="flex gap-3">
+                  <span className="mt-1 h-5 w-5 rounded-full bg-ember/15 ring-1 ring-ember/40 grid place-items-center shrink-0">
+                    <span className="h-1.5 w-1.5 rounded-full bg-ember" />
+                  </span>
+                  <div>
+                    <div className="font-medium">{x.t}</div>
+                    <div className="text-sm text-muted-foreground">{x.d}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </motion.aside>
+        </div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-          className="lg:col-span-7 space-y-5 text-lg text-foreground/85 leading-relaxed"
+          initial={{ opacity: 0, y: 30, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-5 order-1 lg:order-2 relative"
         >
-          <p>
-            I started building WordPress sites at 16, fell in love with the way good code makes design come alive,
-            and never stopped. Today I lead end-to-end builds — from strategy and design systems to
-            performance, SEO and the boring-but-critical bits that keep a site healthy years after launch.
-          </p>
-          <p>
-            Most of my work lives somewhere between marketing and engineering: brand sites that need to be fast
-            and beautiful, WooCommerce stores that have to convert, and React experiences that feel like product, not slideshows.
-          </p>
-          <p>
-            I freelance because it lets me stay close to the craft. Every line of code, every easing curve, every
-            heading — chosen on purpose.
-          </p>
+          <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-3xl overflow-hidden ring-1 ring-foreground/15 ring-ember-glow">
+            <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-ember/40 via-ember-glow/20 to-transparent blur-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-background/0 via-background/0 to-background/60 z-10 pointer-events-none" />
+            <img
+              src={profileImg}
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              className="absolute inset-0 w-full h-full object-cover object-top select-none"
+            />
+            <div className="absolute bottom-4 left-4 z-20 glass rounded-xl px-3 py-2 text-xs">
+              <div className="font-semibold">Muhammad Ahsan</div>
+              <div className="text-muted-foreground">Sr. WordPress &amp; Frontend Engineer</div>
+            </div>
+          </div>
         </motion.div>
-        <motion.aside
-          initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1 }}
-          className="lg:col-span-5 rounded-3xl border border-foreground/10 bg-card p-6 sm:p-8 ring-ember-glow"
-        >
-          <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">What I do best</div>
-          <ul className="space-y-4">
-            {[
-              { t: "WordPress & Elementor", d: "Custom themes, block patterns, page-builder mastery." },
-              { t: "WooCommerce", d: "Stores that load fast and check out faster." },
-              { t: "React & Motion", d: "Cinematic frontends with measurable performance." },
-              { t: "SEO & Speed", d: "Technical SEO, schema, Core Web Vitals in the green." },
-            ].map((x) => (
-              <li key={x.t} className="flex gap-3">
-                <span className="mt-1 h-5 w-5 rounded-full bg-ember/15 ring-1 ring-ember/40 grid place-items-center">
-                  <span className="h-1.5 w-1.5 rounded-full bg-ember" />
-                </span>
-                <div>
-                  <div className="font-medium">{x.t}</div>
-                  <div className="text-sm text-muted-foreground">{x.d}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </motion.aside>
       </div>
     </Section>
   );
