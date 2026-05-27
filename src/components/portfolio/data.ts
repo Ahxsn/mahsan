@@ -76,13 +76,13 @@ export const SERVICES = [
   {
     n: "03",
     title: "Advanced Elementor Dev",
-    desc: "Custom Elementor layouts, dynamic content and lightweight, manageable sites — full control without constant dev help.",
+    desc: "Custom Elementor layouts, dynamic content and lightweight, manageable sites. Full control without constant dev help.",
     icon: "blocks",
   },
   {
     n: "04",
     title: "Scalable E-commerce",
-    desc: "Robust WooCommerce stores optimised for sales — secure payments, inventory management, built to grow with your business.",
+    desc: "Robust WooCommerce stores optimised for sales. Secure payments, inventory management, built to grow with your business.",
     icon: "shopping",
   },
   {

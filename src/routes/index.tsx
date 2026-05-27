@@ -380,7 +380,7 @@ function Skills() {
       id="skills"
       eyebrow="Skill set"
       title={<>A full stack, <span className="text-gradient-ember">cinematically</span> wired.</>}
-      sub="From WordPress to WebGL — a connected toolkit that lets one developer ship what usually takes a team."
+      sub="From WordPress to WebGL. A connected toolkit that lets one developer ship what usually takes a team."
     >
       <div className="grid lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-6">
@@ -427,7 +427,7 @@ function WhyChoose() {
   const items = [
     { t: "Expertise that compounds", d: "Eight years of shipping WordPress and React. No learning on your dime." },
     { t: "Communication first", d: "Async updates, weekly demos, no ghosting. You always know what's next." },
-    { t: "Performance budget, day one", d: "Lighthouse 95+ on launch — and a maintenance plan to keep it there." },
+    { t: "Performance budget, day one", d: "Lighthouse 95+ on launch, with a maintenance plan to keep it there." },
     { t: "SEO baked in", d: "Schema, metadata, semantic HTML and Core Web Vitals tuned into the stack." },
     { t: "Speed as a feature", d: "Asset pipelines, image strategies and caching designed for real users." },
     { t: "Long-term support", d: "Care plans, monitoring and predictable monthly retainers." },
@@ -474,7 +474,7 @@ function CTA() {
             Ready to launch a site that <span className="text-gradient-ember">actually converts?</span>
           </h2>
           <p className="mt-5 text-lg text-muted-foreground max-w-2xl">
-            Tell me about your project — goals, timeline and budget. I'll come back within one business day
+            Tell me about your project. Goals, timeline and budget. I'll come back within one business day
             with a clear plan and a fixed price. No agency overhead, no surprises.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
