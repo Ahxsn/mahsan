@@ -287,12 +287,34 @@ function About() {
             The result is a partner that operates with the discipline of an agency, the velocity of a solo
             specialist and the long-term commitment of an in-house lead. Sites built for years of compounding return.
           </motion.p>
+        </div>
+        <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
+          >
+            <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-3xl overflow-hidden ring-1 ring-foreground/15 ring-ember-glow">
+              <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-ember/40 via-ember-glow/20 to-transparent blur-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-background/0 via-background/0 to-background/60 z-10 pointer-events-none" />
+              <img
+                src={profileImg}
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                className="absolute inset-0 w-full h-full object-cover object-top select-none"
+              />
+              <div className="absolute bottom-4 left-4 z-20 glass rounded-xl px-3 py-2 text-xs">
+                <div className="font-semibold">Muhammad Ahsan</div>
+                <div className="text-muted-foreground">Sr. WordPress &amp; Frontend Engineer</div>
+              </div>
+            </div>
+          </motion.div>
           <motion.aside
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1 }}
-            className="rounded-3xl border border-foreground/10 bg-card p-6 sm:p-8 ring-ember-glow"
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.15 }}
+            className="w-full max-w-md mx-auto rounded-3xl border border-foreground/10 bg-card p-6 sm:p-7 ring-ember-glow"
           >
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">Core competencies</div>
-            <ul className="grid sm:grid-cols-2 gap-4">
+            <ul className="grid grid-cols-1 gap-4">
               {[
                 { t: "WordPress & Elementor", d: "Custom themes, block patterns and locked-down editor experiences." },
                 { t: "Custom Plugins", d: "Purpose-built functionality engineered for security and scale." },
@@ -314,26 +336,6 @@ function About() {
             </ul>
           </motion.aside>
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 order-1 lg:order-2 relative"
-        >
-          <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-3xl overflow-hidden ring-1 ring-foreground/15 ring-ember-glow">
-            <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-ember/40 via-ember-glow/20 to-transparent blur-2xl" />
-            <div className="absolute inset-0 bg-gradient-to-br from-background/0 via-background/0 to-background/60 z-10 pointer-events-none" />
-            <img
-              src={profileImg}
-              alt=""
-              aria-hidden="true"
-              draggable={false}
-              className="absolute inset-0 w-full h-full object-cover object-top select-none"
-            />
-            <div className="absolute bottom-4 left-4 z-20 glass rounded-xl px-3 py-2 text-xs">
-              <div className="font-semibold">Muhammad Ahsan</div>
-              <div className="text-muted-foreground">Sr. WordPress &amp; Frontend Engineer</div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </Section>
   );
