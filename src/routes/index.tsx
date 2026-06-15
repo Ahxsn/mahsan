@@ -36,7 +36,7 @@ export const Route = createFileRoute("/")({
         telephone: "+92 303 9968120",
         url: "/",
         sameAs: ["https://www.linkedin.com/in/m-ahxsn", "https://github.com/Ahxsn", "https://wa.me/923039968120"],
-        knowsAbout: ["WordPress", "Elementor", "WooCommerce", "Custom Themes", "Custom Plugins", "Landing Pages", "E-commerce", "React", "SEO"],
+        knowsAbout: ["WordPress", "Elementor", "Bricks Builder", "WooCommerce", "Custom Themes", "Custom Plugins", "Landing Pages", "E-commerce", "React", "SEO"],
       }),
     }],
   }),
@@ -655,7 +655,7 @@ function Footer() {
           {/* Sitemap */}
           <div className="lg:col-span-3 grid grid-cols-2 gap-8">
             <FooterCol title="Site" links={[["About", "#about"], ["Services", "#services"], ["Work", "#work"], ["FAQ", "#faq"]]} />
-            <FooterCol title="Skills" links={[["WordPress", "#skills"], ["Elementor", "#skills"], ["WooCommerce", "#skills"], ["React", "#skills"]]} />
+            <FooterCol title="Skills" links={[["WordPress", "#skills"], ["Elementor", "#skills"], ["Bricks Builder", "#skills"], ["WooCommerce", "#skills"], ["React", "#skills"]]} />
           </div>
 
           {/* Contact card */}

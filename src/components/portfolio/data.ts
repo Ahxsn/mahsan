@@ -97,6 +97,12 @@ export const SERVICES = [
     desc: "Monthly updates, security monitoring, backups and on-demand changes so your site keeps performing for years.",
     icon: "shield",
   },
+  {
+    n: "07",
+    title: "Bricks Builder Dev",
+    desc: "High-performance Bricks Builder sites with dynamic data, custom elements and blazing fast render times.",
+    icon: "blocks",
+  },
 ];
 
 export const TESTIMONIALS = [
