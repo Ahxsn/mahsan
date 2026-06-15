@@ -97,6 +97,12 @@ export const SERVICES = [
     desc: "Monthly updates, security monitoring, backups and on-demand changes so your site keeps performing for years.",
     icon: "shield",
   },
+  {
+    n: "07",
+    title: "Bricks Builder Dev",
+    desc: "High-performance Bricks Builder sites with dynamic data, custom elements and blazing fast render times.",
+    icon: "blocks",
+  },
 ];
 
 export const TESTIMONIALS = [
@@ -137,10 +143,10 @@ export const TESTIMONIALS = [
 ];
 
 export const FAQS = [
-  { q: "Do you build websites from scratch or use templates?", a: "Both. I lean on custom architecture whenever the brand deserves it. For WordPress, I build custom themes and Elementor systems tailored to your content workflows. For React projects, every component is hand-crafted to your design system." },
+  { q: "Do you build websites from scratch or use templates?", a: "Both. I lean on custom architecture whenever the brand deserves it. For WordPress, I build custom themes, Elementor and Bricks systems tailored to your content workflows. For React projects, every component is hand-crafted to your design system." },
   { q: "How fast will my website actually be?", a: "I target 95+ on Lighthouse and green Core Web Vitals on real-world devices. Speed is not bolted on at the end. It is planned into the stack, the image pipeline, the hosting and the third-party scripts from day one." },
   { q: "Can you redesign my existing WordPress site without breaking SEO?", a: "Yes. I preserve URL structures, redirect anything that must change with 301s, migrate metadata, and validate schema and indexing before and after launch so rankings stay stable." },
-  { q: "Do you handle Elementor and custom theme work?", a: "Daily. I build custom Elementor widgets, lock down the editor experience for client teams, and convert Figma files into clean, reusable Elementor templates that do not bloat your site." },
+  { q: "Do you handle Elementor, Bricks Builder and custom theme work?", a: "Daily. I build custom Elementor and Bricks widgets, lock down the editor experience for client teams, and convert Figma files into clean, reusable templates that do not bloat your site." },
   { q: "What about responsive design and mobile UX?", a: "Every project is designed mobile-first and reviewed on multiple real devices. Layouts, animations and interactions are tuned per breakpoint, not just scaled down." },
   { q: "Do you provide ongoing maintenance and support?", a: "Yes. I offer monthly care plans covering updates, backups, security monitoring, performance audits and a fixed amount of content or design changes each month." },
   { q: "How do we work together if you are freelance?", a: "Clear scope, weekly check-ins, a shared project board and a Loom-friendly workflow. You always know what is in progress, what is blocked and what ships next." },
