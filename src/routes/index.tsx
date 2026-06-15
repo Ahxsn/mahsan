@@ -84,7 +84,7 @@ function Section({ id, eyebrow, title, sub, children, className = "" }: {
           <div className="max-w-3xl mb-12 sm:mb-16">
             {eyebrow && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6 }}
                 className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-3 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground mb-5"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2.4s_ease-in-out_infinite]" />
@@ -93,7 +93,7 @@ function Section({ id, eyebrow, title, sub, children, className = "" }: {
             )}
             {title && (
               <motion.h2
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight"
               >
                 {title}
@@ -101,7 +101,7 @@ function Section({ id, eyebrow, title, sub, children, className = "" }: {
             )}
             {sub && (
               <motion.p
-                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
+                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.1 }}
                 className="mt-5 text-lg text-muted-foreground max-w-2xl leading-relaxed"
               >
                 {sub}
@@ -273,24 +273,24 @@ function About() {
     >
       <div className="grid lg:grid-cols-12 gap-10 items-start">
         <div className="lg:col-span-7 order-2 lg:order-1 space-y-5 text-lg text-foreground/85 leading-relaxed">
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
             I am a senior WordPress and frontend engineer specialising in the end-to-end delivery of premium
             digital platforms. My practice spans custom theme architecture, advanced Elementor systems, bespoke
             plugin engineering, WooCommerce commerce builds and high-performance React experiences.
           </motion.p>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.1 }}>
             Every engagement is approached with a measurable mandate: maximise conversion, reduce technical
             debt, and ship sites that meet enterprise standards for speed, security, accessibility and search
             visibility. Strategy, design execution and engineering are tightly coupled under one accountable owner.
           </motion.p>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }}>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.2 }}>
             The result is a partner that operates with the discipline of an agency, the velocity of a solo
             specialist and the long-term commitment of an in-house lead. Sites built for years of compounding return.
           </motion.p>
         </div>
         <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col gap-6">
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 30, scale: 0.96 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
             <div className="relative aspect-[4/5] w-full max-w-md mx-auto rounded-3xl overflow-hidden ring-1 ring-foreground/15 ring-ember-glow">
@@ -310,7 +310,7 @@ function About() {
             </div>
           </motion.div>
           <motion.aside
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.15 }}
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.8, delay: 0.15 }}
             className="w-full max-w-md mx-auto rounded-3xl border border-foreground/10 bg-card p-6 sm:p-7 ring-ember-glow"
           >
             <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">Core competencies</div>
@@ -420,7 +420,7 @@ function WhyChoose() {
         {items.map((x, i) => (
           <motion.div
             key={x.t}
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: (i % 3) * 0.08 }}
             whileHover={{ y: -4 }}
             className="relative rounded-2xl border border-foreground/10 bg-card p-6 overflow-hidden group"
           >
@@ -766,20 +766,20 @@ function Page() {
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="max-w-3xl mb-12 sm:mb-16">
               <motion.div
-                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6 }}
                 className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-3 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground mb-5"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-ember animate-[pulse-glow_2.4s_ease-in-out_infinite]" />
                 Client love
               </motion.div>
               <motion.h2
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight"
               >
                 Trusted by <span className="text-gradient-ember">founders and studios.</span>
               </motion.h2>
               <motion.p
-                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
+                initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.1 }}
                 className="mt-5 text-lg text-muted-foreground max-w-2xl leading-relaxed"
               >
                 Real reviews from clients across four continents. Hover the marquee to slow it down.
