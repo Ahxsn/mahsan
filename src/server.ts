@@ -25,6 +25,27 @@ function brandedErrorResponse(): Response {
   });
 }
 
+const SECURITY_HEADERS: Record<string, string> = {
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "SAMEORIGIN",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+  "X-XSS-Protection": "1; mode=block",
+};
+
+function withSecurityHeaders(response: Response): Response {
+  const headers = new Headers(response.headers);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) {
+    if (!headers.has(k)) headers.set(k, v);
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 function isCatastrophicSsrErrorBody(body: string, responseStatus: number): boolean {
   let payload: unknown;
   try {
@@ -71,10 +92,11 @@ export default {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+      return withSecurityHeaders(normalized);
     } catch (error) {
       console.error(error);
-      return brandedErrorResponse();
+      return withSecurityHeaders(brandedErrorResponse());
     }
   },
 };

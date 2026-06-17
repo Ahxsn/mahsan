@@ -11,6 +11,7 @@ import { Testimonials } from "@/components/portfolio/Testimonials";
 import { Services } from "@/components/portfolio/Services";
 import { FAQ } from "@/components/portfolio/FAQ";
 import { FloatingElements } from "@/components/portfolio/FloatingElements";
+import { TextReveal } from "@/components/portfolio/TextReveal";
 import { STATS } from "@/components/portfolio/data";
 import logoImg from "@/assets/logo.png";
 import profileImg from "@/assets/profile.webp";
@@ -303,11 +304,9 @@ function About() {
     >
       <div className="grid lg:grid-cols-12 gap-10 items-start">
         <div className="lg:col-span-7 order-1 space-y-5 text-lg text-foreground/85 leading-relaxed">
-          <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7 }}>
-            I am a senior WordPress and frontend engineer specialising in the end-to-end delivery of premium
-            digital platforms. My practice spans custom theme architecture, advanced Elementor and Bricks systems, bespoke
-            plugin engineering, WooCommerce commerce builds and high-performance React experiences.
-          </motion.p>
+          <TextReveal className="text-lg sm:text-xl leading-relaxed">
+            I am a senior WordPress, PHP and JavaScript engineer from Pakistan specialising in custom theme architecture, bespoke plugin development, advanced Elementor and Bricks systems, WooCommerce builds and high-performance React experiences.
+          </TextReveal>
           <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.1 }}>
             Every engagement is approached with a measurable mandate: maximise conversion, reduce technical
             debt, and ship sites that meet enterprise standards for speed, security, accessibility and search
