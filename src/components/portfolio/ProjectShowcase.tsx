@@ -37,6 +37,8 @@ function Card({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
               src={p.image}
               alt=""
               aria-hidden="true"
+              loading="lazy"
+              decoding="async"
               className="block w-full h-auto select-none pointer-events-none"
               draggable={false}
             />

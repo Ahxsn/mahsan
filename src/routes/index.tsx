@@ -358,6 +358,8 @@ function About() {
                 alt=""
                 aria-hidden="true"
                 draggable={false}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-top select-none"
               />
               <div className="absolute bottom-4 left-4 z-20 glass rounded-xl px-3 py-2 text-xs">
