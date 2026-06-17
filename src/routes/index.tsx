@@ -10,6 +10,7 @@ import { ProjectShowcase } from "@/components/portfolio/ProjectShowcase";
 import { Testimonials } from "@/components/portfolio/Testimonials";
 import { Services } from "@/components/portfolio/Services";
 import { FAQ } from "@/components/portfolio/FAQ";
+import { FloatingElements } from "@/components/portfolio/FloatingElements";
 import { STATS } from "@/components/portfolio/data";
 import logoImg from "@/assets/logo.png";
 import profileImg from "@/assets/profile.webp";
@@ -18,10 +19,14 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Muhammad Ahsan | Expert WordPress, Elementor & React Developer" },
-      { name: "description", content: "Hire Muhammad Ahsan (Ahxsn) for premium WordPress, Elementor, WooCommerce, custom themes, custom plugins and high-converting landing page development. Fast, SEO-optimized, beautifully animated websites." },
-      { property: "og:title", content: "Muhammad Ahsan | Expert WordPress, Elementor & React Developer" },
-      { property: "og:description", content: "Pixel-perfect WordPress, WooCommerce, custom themes and custom plugin development. Core Web Vitals in the green. Available for new projects." },
+      { title: "WordPress Developer in Pakistan | Muhammad Ahsan — Custom Themes & Plugins" },
+      { name: "description", content: "Muhammad Ahsan is a senior WordPress developer in Pakistan building custom themes, custom plugins, WooCommerce stores and high-converting landing pages with PHP, JavaScript, Elementor and Bricks Builder." },
+      { name: "keywords", content: "WordPress developer Pakistan, custom WordPress theme development, WordPress plugin developer, WooCommerce expert Pakistan, Elementor developer Pakistan" },
+      { name: "geo.region", content: "PK" },
+      { name: "geo.placename", content: "Pakistan" },
+      { property: "og:title", content: "WordPress Developer in Pakistan | Muhammad Ahsan — Custom Themes & Plugins" },
+      { property: "og:description", content: "Senior WordPress, PHP & JavaScript developer from Pakistan. Custom themes, custom plugins, WooCommerce and high-converting landing pages built for speed and SEO." },
+      { property: "og:locale", content: "en_PK" },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [{
@@ -31,12 +36,13 @@ export const Route = createFileRoute("/")({
         "@type": "Person",
         name: "Muhammad Ahsan",
         alternateName: "Ahxsn",
-        jobTitle: "Expert WordPress & Creative Frontend Developer",
+        jobTitle: "WordPress Developer in Pakistan — Custom Themes & Plugins",
         email: "m.ahxsn@gmail.com",
         telephone: "+92 303 9968120",
         url: "/",
+        address: { "@type": "PostalAddress", addressCountry: "PK" },
         sameAs: ["https://www.linkedin.com/in/m-ahxsn", "https://github.com/Ahxsn", "https://wa.me/923039968120"],
-        knowsAbout: ["WordPress", "Elementor", "Bricks Builder", "WooCommerce", "Custom Themes", "Custom Plugins", "Landing Pages", "E-commerce", "React", "SEO"],
+        knowsAbout: ["WordPress developer Pakistan", "Custom WordPress theme development", "WordPress plugin developer", "WooCommerce expert Pakistan", "Elementor developer Pakistan", "PHP", "JavaScript", "React", "Bricks Builder"],
       }),
     }],
   }),
@@ -250,6 +256,24 @@ function Marquee() {
         <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M3 5h8v4H3V5Zm10 0h8v4h-8V5ZM3 13h8v4H3v-4Zm10 0h8v4h-8v-4Z" /></svg>
       ),
     },
+    {
+      name: "PHP", color: "#777BB4",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M12 5C6.5 5 2 8.1 2 12s4.5 7 10 7 10-3.1 10-7-4.5-7-10-7Zm-1.2 9.6H9.3l.4-2h-1l-.4 2H6.9l1-4.8h1.4l-.4 1.8h1l.4-1.8h1.4l-1 4.8Zm5-3.4c-.2.9-.9 1.2-2 1.2h-.9l-.3 1.4H11l1-4.8h2c1.2 0 1.7.4 1.5 1.4Z" /></svg>
+      ),
+    },
+    {
+      name: "JavaScript", color: "#F7DF1E",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M4 3h16v18H4V3Zm8.5 13c0 1 .5 1.7 1.6 1.7s1.7-.5 1.7-2v-5h1.6v5c0 2-.9 3.4-3.3 3.4-2 0-3.3-1.1-3.3-3.1h1.7Zm-4.7-.1c.2.9.8 1.6 1.9 1.6.9 0 1.4-.5 1.4-1.1 0-.7-.4-1-1.5-1.4l-.6-.3c-1.7-.7-2.7-1.6-2.7-3.2 0-1.5 1.1-2.7 2.9-2.7 1.3 0 2.2.5 2.8 1.7l-1.5.9c-.3-.6-.6-.8-1.3-.8s-1.1.4-1.1.9c0 .6.4.9 1.4 1.3l.6.3c2 .9 3 1.7 3 3.4 0 1.8-1.4 2.8-3.3 2.8-1.9 0-3-.9-3.6-2.1l1.6-.9Z" /></svg>
+      ),
+    },
+    {
+      name: "Custom Plugin Dev", color: "#0ea5e9",
+      icon: (
+        <svg viewBox="0 0 24 24" className="h-7 w-7"><path fill="currentColor" d="M14 2a2 2 0 0 0-2 2v2H8a2 2 0 0 0-2 2v4H4a2 2 0 1 0 0 4h2v4a2 2 0 0 0 2 2h4v-2a2 2 0 1 1 4 0v2h4a2 2 0 0 0 2-2v-4h-2a2 2 0 1 1 0-4h2V8a2 2 0 0 0-2-2h-4V4a2 2 0 0 0-2-2Z" /></svg>
+      ),
+    },
   ];
   const doubled = [...items, ...items];
   return (
@@ -301,7 +325,8 @@ function About() {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 { t: "WordPress, Elementor & Bricks", d: "Custom themes, block patterns and locked-down editor experiences across both builders." },
-                { t: "Custom Plugins", d: "Purpose-built functionality engineered for security and scale." },
+                { t: "Custom Plugin Development", d: "Bespoke WordPress plugins in PHP and JavaScript, engineered for security and scale." },
+                { t: "PHP & Custom Themes", d: "Hand-coded PHP themes, hooks, REST APIs and Gutenberg blocks tailored to your stack." },
                 { t: "WooCommerce", d: "Storefronts that load fast and check out faster." },
                 { t: "Landing Pages", d: "High-conversion, CRO-optimised pages built for paid traffic." },
                 { t: "React & Motion", d: "Cinematic frontends with measurable runtime performance." },
@@ -351,6 +376,8 @@ const SKILL_GROUPS = [
   { name: "WordPress", desc: "Custom themes, blocks, ACF, multilingual, headless setups." },
   { name: "Elementor Pro", desc: "Custom widgets, theme builder, locked-down editor experiences." },
   { name: "Bricks Builder", desc: "High-performance visual builds with clean markup, dynamic data and total design freedom." },
+  { name: "PHP & Custom Themes", desc: "Hand-crafted PHP themes, hooks, REST endpoints and Gutenberg blocks engineered for performance and security." },
+  { name: "JavaScript & Plugin Dev", desc: "Custom WordPress plugins, admin panels and front-end interactivity built with modern JavaScript and battle-tested PHP." },
   { name: "WooCommerce", desc: "Stores, subscriptions, multi-currency, checkout optimisation." },
   { name: "React", desc: "Component libraries, design systems, animated SPAs and SSR." },
   { name: "Tailwind CSS", desc: "Design tokens, theming, accessible utility-driven UI." },
